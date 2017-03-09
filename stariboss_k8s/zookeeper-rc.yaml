@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: zookeeper 
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: zookeeper
+      labels:
+        app: zookeeper
+        tier: backend
+        group: stariboss
+    spec:
+      containers:
+      - name: zookeeper
+        image: registry:5000/zookeeper:basal
+        resources:
+          requests:
+            cpu: 1
+            memory: 1000Mi
+        volumeMounts:
+          - mountPath: /etc/localtime
+            name: localtime
+        ports:
+        - containerPort: 2181
+      volumes:
+       - name: localtime
+         hostPath:
+           path: /etc/localtime
+
+ 
+

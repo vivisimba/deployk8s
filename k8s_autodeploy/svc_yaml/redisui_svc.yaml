@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: redisui
+  namespace: kube-system
+  labels:
+    name: redisui
+spec:
+  selector:
+    name: redisui
+  type: NodePort
+  ports:
+  - port: 63790
+    targetPort: 63790
+    nodePort: 30203

@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: card-center-s
+  namespace: kube-system
+  labels:
+    name: card-center-s
+spec:
+  replicas: 1
+  selector:
+    name: card-center-s
+  template:
+    metadata:
+      labels: 
+        name: card-center-s
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: card-center-s
+        image: registry:5000/library/card-center-service:BUILDTAG_7.1.1-148-161009
+        env: 
+          - name: TZ
+            value: Asia/Shanghai
+        ports:
+        - containerPort: 8080
+          name: card-center-s
+          protocol: TCP
+      dnsPolicy: ClusterFirst

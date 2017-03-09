@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: worker-ui
+  namespace: {NAME_SPACE}
+  labels:
+    name: worker-ui
+spec:
+  replicas: 1
+  selector:
+    name: worker-ui
+  template:
+    metadata:
+      labels: 
+        name: worker-ui
+    spec:
+      imagePullSecrets:
+      - name: mysecret
+      restartPolicy: Always
+      containers:
+      - name: worker-ui
+        image: 10.0.251.196/boss/worker-ui:{IMAGE_TAG}
+        volumeMounts:
+          - mountPath: {NFS_CONTAINER_DIR}
+            name: nfs
+        imagePullPolicy: Always
+        env: 
+          - name: TZ
+            value: Asia/Shanghai
+        ports:
+        - containerPort: 8080
+          name: "worker-ui"
+          protocol: TCP
+      dnsPolicy: ClusterFirst
+      volumes:
+      - name: nfs
+        hostPath:
+          path: {NFS_HOST_DIR}

@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: resource-center-service
+  namespace: {NAME_SPACE}
+  labels:
+    name: resource-center-service
+spec:
+  replicas: 1
+  selector:
+    name: resource-center-service
+  template:
+    metadata:
+      labels: 
+        name: resource-center-service
+    spec:
+      imagePullSecrets:
+      - name: mysecret
+      restartPolicy: Always
+      containers:
+      - name: resource-center-s
+        image: 10.0.251.196/boss/resource-center-service:{IMAGE_TAG}
+        volumeMounts:
+          - mountPath: {NFS_CONTAINER_DIR}
+            name: nfs
+        imagePullPolicy: Always
+        env: 
+          - name: TZ
+            value: Asia/Shanghai
+        ports:
+        - containerPort: 8080
+          name: resource-c
+          protocol: TCP
+      dnsPolicy: ClusterFirst
+      volumes:
+      - name: nfs
+        hostPath:
+          path: {NFS_HOST_DIR}

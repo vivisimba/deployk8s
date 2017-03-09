@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: dubbomonitor
+  namespace: {NAME_SPACE}
+  labels:
+    name: dubbomonitor
+spec:
+  replicas: 1
+  selector:
+    name: dubbomonitor
+  template:
+    metadata:
+      labels: 
+        name: dubbomonitor
+    spec:
+      imagePullSecrets:
+      - name: mysecret
+      restartPolicy: Always
+      containers:
+      - name: dubbomonitor
+        image: 10.0.251.196/platform/dubbo-monitor:2.8.4
+        imagePullPolicy: Always
+        volumeMounts:
+          - name: dubboconfig
+            mountPath: /usr/local/tomcat/webapps/dubbo-monitor/WEB-INF/classes/application.properties
+          - name: dmlogs
+            mountPath: /usr/local/tomcat/logs
+        env: 
+          - name: TZ
+            value: Asia/Shanghai
+          - name: JAVA_OPTS
+            value: '-Xmx512m'
+        ports:
+        - containerPort: 8080
+          name: dubbomonitor
+          protocol: TCP
+      dnsPolicy: ClusterFirst
+      volumes:
+      - name: dubboconfig
+        hostPath:
+          path: {NFS_HOST_DIR}/dubbomonitor/dubbo-monitor/WEB-INF/classes/application.properties
+      - name: dmlogs
+        hostPath:
+          path: {NFS_HOST_DIR}/dubbomonitor/logs

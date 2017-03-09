@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: stariboss-cc-pr
+  namespace: {NAME_SPACE}
+  labels:
+    name: stariboss-callcenter-proxy
+spec:
+  selector:
+    name: stariboss-callcenter-proxy
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 8080
+    nodePort: 30252

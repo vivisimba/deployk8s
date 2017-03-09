@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: note-service
+  namespace: {NAME_SPACE}
+  labels:
+    name: note-service
+spec:
+  replicas: 1
+  selector:
+    name: note-service
+  template:
+    metadata:
+      labels: 
+        name: note-service
+    spec:
+      imagePullSecrets:
+      - name: mysecret
+      restartPolicy: Always
+      containers:
+      - name: note-s
+        image: 10.0.251.196/boss/note-service:{IMAGE_TAG}
+        volumeMounts:
+          - mountPath: {NFS_CONTAINER_DIR}
+            name: nfs
+        imagePullPolicy: Always
+        env: 
+          - name: TZ
+            value: Asia/Shanghai
+        ports:
+        - containerPort: 8080
+          name: note-s
+          protocol: TCP
+      dnsPolicy: ClusterFirst
+      volumes:
+      - name: nfs
+        hostPath:
+          path: {NFS_HOST_DIR}

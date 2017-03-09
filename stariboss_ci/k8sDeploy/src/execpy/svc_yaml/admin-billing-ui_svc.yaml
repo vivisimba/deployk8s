@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: admin-billing-ui
+  namespace: {NAME_SPACE}
+  labels:
+    name: admin-billing-ui
+spec:
+  selector:
+    name: admin-billing-ui
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 8080
+    nodePort: 30219

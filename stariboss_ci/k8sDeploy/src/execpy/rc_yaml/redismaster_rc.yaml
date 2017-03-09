@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: redismaster
+  namespace: {NAME_SPACE}
+  labels:
+    name: redismaster
+spec:
+  replicas: 1
+  selector:
+    name: redismaster
+  template:
+    metadata:
+      labels: 
+        name: redismaster
+    spec:
+      imagePullSecrets:
+      - name: mysecret
+      restartPolicy: Always
+      containers:
+      - name: redismaster
+        image: 10.0.251.196/platform/redis:3.0.7
+        imagePullPolicy: Always
+        args: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+        volumeMounts:
+          - mountPath: /usr/local/etc/redis/redis.conf
+            name: masterconf
+        env: 
+          - name: TZ
+            value: Asia/Shanghai
+        ports:
+        - containerPort: 6380
+          name: redismaster
+          protocol: TCP
+      dnsPolicy: ClusterFirst
+      volumes:
+      - name: masterconf
+        hostPath:
+          path: {NFS_HOST_DIR}/redis/master/6380.conf

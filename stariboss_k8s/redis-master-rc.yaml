@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: redis-master
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: redis-master
+      labels:
+        app: redis
+        role: master
+        tier: backend
+        group: stariboss
+    spec:
+      containers:
+      - name: redis-master
+        image: registry:5000/redis:basal
+        args: [ "redis-server", "/config/redis-master.conf" ]
+        resources:
+          requests:
+            cpu: 1
+            memory: 2000Mi
+        volumeMounts:
+        - mountPath: /etc/localtime
+          name: localtime
+        - mountPath: /config
+          name: config
+        ports:
+        - containerPort: 6379
+      volumes:
+      - name: localtime
+        hostPath:
+          path: /etc/localtime
+      - name: config
+        persistentVolumeClaim:
+          claimName: config-pv
+#          readOnly: true
+#      - name: config
+#        configMap:
+#          name: config
+#          items:
+#          - key: redis-master.conf
+#            path: redis-master.conf

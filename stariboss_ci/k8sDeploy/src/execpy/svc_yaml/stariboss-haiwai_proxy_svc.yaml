@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: stariboss-hw-pr
+  namespace: {NAME_SPACE}
+  labels:
+    name: stariboss-haiwai-proxy
+spec:
+  selector:
+    name: stariboss-haiwai-proxy
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 8080
+    nodePort: 30254

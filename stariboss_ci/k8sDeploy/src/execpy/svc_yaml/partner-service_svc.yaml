@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: partner-service
+  namespace: {NAME_SPACE}
+  labels:
+    name: partner-s
+spec:
+  selector:
+    name: partner-service
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 8080
+    nodePort: 30215

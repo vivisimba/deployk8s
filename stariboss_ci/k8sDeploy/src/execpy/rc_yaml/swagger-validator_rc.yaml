@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: swagger-validator
+  namespace: {NAME_SPACE}
+  labels:
+    name: swagger-validator
+spec:
+  replicas: 1
+  selector:
+    name: swagger-validator
+  template:
+    metadata:
+      labels: 
+        name: swagger-validator
+    spec:
+      imagePullSecrets:
+      - name: mysecret
+      restartPolicy: Always
+      containers:
+      - name: swagger-validator
+        image: 10.0.251.196/platform/swagger-validator:basal
+        imagePullPolicy: Always
+        env: 
+          - name: TZ
+            value: Asia/Shanghai
+        ports:
+        - containerPort: 8080
+          name: swagger-v
+          protocol: TCP
+      dnsPolicy: ClusterFirst

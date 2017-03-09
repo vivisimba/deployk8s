@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: admin-product-ui
+  namespace: {NAME_SPACE}
+  labels:
+    name: admin-product-ui
+spec:
+  selector:
+    name: admin-product-ui
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 8080
+    nodePort: 30222

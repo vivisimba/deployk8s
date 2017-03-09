@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: account-center-service
+  namespace: kube-system
+  labels:
+    name: account-center-s
+spec:
+  selector:
+    name: account-center-service
+  ports:
+  - port: 8080
+    targetPort: 8080

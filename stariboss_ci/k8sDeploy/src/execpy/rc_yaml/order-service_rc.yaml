@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: order-service
+  namespace: {NAME_SPACE}
+  labels:
+    name: order-service
+spec:
+  replicas: 1
+  selector:
+    name: order-service
+  template:
+    metadata:
+      labels: 
+        name: order-service
+    spec:
+      imagePullSecrets:
+      - name: mysecret
+      restartPolicy: Always
+      containers:
+      - name: order-s
+        image: 10.0.251.196/boss/order-service:{IMAGE_TAG}
+        volumeMounts:
+          - mountPath: {NFS_CONTAINER_DIR}
+            name: nfs
+        imagePullPolicy: Always
+        env: 
+          - name: TZ
+            value: Asia/Shanghai
+        ports:
+        - containerPort: 8080
+          name: order-s
+          protocol: TCP
+      dnsPolicy: ClusterFirst
+      volumes:
+      - name: nfs
+        hostPath:
+          path: {NFS_HOST_DIR}

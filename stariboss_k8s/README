@@ -1,0 +1,37 @@
+
+0. 加载配置ConfigMap
+   kubectl create configmap config --from-file=config
+
+1. 启动Redis 
+   kubectl create -f redis-master-service.yaml,redis-sentinel-service.yaml
+   kubectl create -f redis-master-rc.yaml,redis-slave-rc.yaml,redis-slave-rdb-rc.yaml,redis-sentinel-rc.yaml
+
+   删除过程
+   kubectl delete rc redis-sentinel redis-slave redis-slave_rdb redis-master
+   kubectl delete svc redis-sentinel redis-master
+
+2. 启动Zookeeper 
+3. 启动BOSS配置 platform-config 程序
+4. 启动BOSS缓存初始化 platform-cache-config 程序
+5. 启动war包 ： 配置 zookeeper IP ？ zookeeper1？ redis1？
+
+# Command : 
+
+kubectl replace -f redis-master-rc.yaml
+
+kubectl exec -it redis-zi8hb redis-cli
+
+kubectl describe svc
+kubectl get svc
+
+kubectl describe rc
+kubectl get rc
+
+kubectl describe pod
+kubectl get pod
+
+kubectl describe node
+kubectl get node
+
+# 注意加载NFS，需要在每个Node 执行 “setenforce 0” ，关闭selinux !
+

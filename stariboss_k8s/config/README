@@ -1,0 +1,2 @@
+# 查看配置，过滤掉注释和空行
+cat redis-slave-rdb.conf | grep -v "#" | tr -s '\n'

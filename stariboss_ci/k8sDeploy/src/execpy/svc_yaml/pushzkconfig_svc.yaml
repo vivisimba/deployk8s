@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pushzkconfig
+  namespace: {NAME_SPACE}
+  labels:
+    name: pushzkconfig
+spec:
+  selector:
+    name: pushzkconfig
+  ports:
+  - port: 8080
+    targetPort: 8080

@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: collection-service
+  namespace: {NAME_SPACE}
+  labels:
+    name: collection-service
+spec:
+  replicas: 1
+  selector:
+    name: collection-service
+  template:
+    metadata:
+      labels: 
+        name: collection-service
+    spec:
+      imagePullSecrets:
+      - name: mysecret
+      restartPolicy: Always
+      containers:
+      - name: collection-s
+        image: 10.0.251.196/boss/collection-service:{IMAGE_TAG}
+        volumeMounts:
+          - mountPath: {NFS_CONTAINER_DIR}
+            name: nfs
+        imagePullPolicy: Always
+        env: 
+          - name: TZ
+            value: Asia/Shanghai
+        ports:
+        - containerPort: 8080
+          name: collection-s
+          protocol: TCP
+      dnsPolicy: ClusterFirst
+      volumes:
+      - name: nfs
+        hostPath:
+          path: {NFS_HOST_DIR}

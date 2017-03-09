@@ -1,0 +1,38 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: zkdash
+  namespace: {NAME_SPACE}
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels: 
+        name: zkdash
+        tier: frontend
+        subsystem: platform
+        version: 2.0.0
+        partition: "no"
+    spec:
+      imagePullSecrets:
+      - name: mysecret
+      restartPolicy: Always
+      containers:
+      - name: zkdash
+        image: 10.0.251.196/platform/zkdash:2.0.0
+        imagePullPolicy: Always
+        volumeMounts:
+          - mountPath: /simba/zkdash/conf/conf.yml
+            name: zkdashconf
+        env: 
+          - name: TZ
+            value: Asia/Shanghai
+        ports:
+        - containerPort: 8888
+          name: zkdash
+          protocol: TCP
+      dnsPolicy: ClusterFirst
+      volumes:
+      - name: zkdashconf
+        hostPath:
+          path: {NFS_HOST_DIR}/zkdashconf/conf.yml

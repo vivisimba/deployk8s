@@ -1,0 +1,11 @@
+redismaster:
+  image: 10.0.251.196/platform/redis:3.0.7
+  restart: always
+  command: redis-server /usr/local/etc/redis/redis.conf
+  ports:
+  - 6381:6381
+  volumes:
+  - /home/nfs/redis/slave/6381.conf:/usr/local/etc/redis/redis.conf
+  environment:
+  - TZ=Asia/Shanghai
+  container_name: redis6381

@@ -1,0 +1,43 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: collection-center-service
+  namespace: {NAME_SPACE}
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels: 
+        name: collection-center-service
+        tier: backend
+        subsystem: unconfirmed
+        version: {VERSION}
+        partition: "no"
+    spec:
+      imagePullSecrets:
+      - name: mysecret
+      restartPolicy: Always
+      containers:
+      - name: collection-center-service
+        image: 10.0.251.196/boss/collection-center-service:{IMAGE_TAG}
+        volumeMounts:
+          - mountPath: {NFS_CONTAINER_DIR}
+            name: nfs
+          - mountPath: /usr/local/tomcat/logs/
+            name: tomcatlogs
+        imagePullPolicy: Always
+        env: 
+          - name: TZ
+            value: Asia/Shanghai
+        ports:
+        - containerPort: 8080
+          name: collection-c-s
+          protocol: TCP
+      dnsPolicy: ClusterFirst
+      volumes:
+      - name: nfs
+        hostPath:
+          path: {NFS_HOST_DIR}
+      - name: tomcatlogs
+        hostPath:
+          path: {NFS_HOST_DIR}/moduleLogs/collection-center-service/logs/

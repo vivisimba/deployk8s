@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: operator-ui
+  namespace: {NAME_SPACE}
+  labels:
+    name: operator-ui
+spec:
+  selector:
+    name: operator-ui
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 8080
+    nodePort: 30240

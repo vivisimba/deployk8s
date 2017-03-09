@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: activiti-rest
+  namespace: {NAME_SPACE}
+  labels:
+    name: activiti-rest
+spec:
+  replicas: 1
+  selector:
+    name: activiti-rest
+  template:
+    metadata:
+      labels: 
+        name: activiti-rest
+    spec:
+      imagePullSecrets:
+      - name: mysecret
+      restartPolicy: Always
+      containers:
+      - name: activiti-rest
+        image: 10.0.251.196/platform/activiti-rest:1.0.0
+        imagePullPolicy: Always
+        volumeMounts:
+          - name: zkconfig
+            mountPath: /usr/local/tomcat/webapps/activiti-rest/WEB-INF/classes/zk.properties
+          - name: dbconfig
+            mountPath: /usr/local/tomcat/webapps/activiti-rest/WEB-INF/classes/db.properties
+        env: 
+          - name: TZ
+            value: Asia/Shanghai
+          - name: JAVA_OPTS
+            value: '-Xmx512m'
+        ports:
+        - containerPort: 8080
+          name: activiti-rest
+          protocol: TCP
+      dnsPolicy: ClusterFirst
+      volumes:
+      - name: zkconfig
+        hostPath:
+          path: {NFS_HOST_DIR}/activiti-rest/WEB-INF/classes/zk.properties
+      - name: dbconfig
+        hostPath:
+          path: {NFS_HOST_DIR}/activiti-rest/WEB-INF/classes/db.properties

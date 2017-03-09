@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: redis-sentinel
+spec:
+  replicas: 2 
+  template:
+    metadata:
+      labels:
+        app: redis
+        role: sentinel
+        tier: backend
+        group: stariboss
+    spec:
+      containers:
+      - name: redis-sentinel
+        image: registry:5000/redis:basal
+        args: [ "redis-sentinel" , "/config/redis-sentinel.conf" ]
+        resources:
+          requests:
+            cpu: 0.5
+            memory: 200Mi
+        volumeMounts:
+        - mountPath: /etc/localtime
+          name: localtime
+        - mountPath: /config
+          name: config
+        ports:
+        - containerPort: 26379
+      volumes:
+      - name: localtime
+        hostPath:
+          path: /etc/localtime
+      - name: config
+        persistentVolumeClaim:
+          claimName: config-pv

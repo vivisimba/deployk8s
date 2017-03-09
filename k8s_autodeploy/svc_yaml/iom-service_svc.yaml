@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: iom-service
+  namespace: kube-system
+  labels:
+    name: iom-s
+spec:
+  selector:
+    name: iom-service
+  ports:
+  - port: 8080
+    targetPort: 8080

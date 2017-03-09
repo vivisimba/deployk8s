@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: problem-service
+  namespace: kube-system
+  labels:
+    name: problem-s
+spec:
+  selector:
+    name: problem-service
+  ports:
+  - port: 8080
+    targetPort: 8080

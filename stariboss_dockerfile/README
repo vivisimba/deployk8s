@@ -1,0 +1,7 @@
+私有镜像库中的镜像的对应Dockerfile说明:
+1. Dockerfile.bossos: stariboss系统的基础镜像, centos + jdk8;
+2. Dockerfile.tomcat: basic tomcat image for all boss application,bossos+tomcat8;
+3. Dockerfile.redis: Official redis image,redis verion:3.0.7
+4. Dockerfile.dubbo: dubbo image, bossos+dubbo;
+5. Dockerfile.zookeeper: Officical zookeeper images
+6. Dockerfile.application.template: Template for all stariboss application images, tomcat8+war;

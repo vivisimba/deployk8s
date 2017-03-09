@@ -1,0 +1,7 @@
+dubbo-2.8.4.3.jar
+javassist-3.20.0-GA.jar
+netty-3.7.0.Final.jar
+platform-activiti.jar
+unirest-java-1.4.9.jar
+zkclient-0.1.jar
+zookeeper-3.4.6.jar

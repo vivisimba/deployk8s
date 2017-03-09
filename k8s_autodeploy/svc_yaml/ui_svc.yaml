@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ui
+  namespace: kube-system
+  labels:
+    name: ui
+spec:
+  selector:
+    name: ui
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 8080
+    nodePort: 30200

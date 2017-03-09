@@ -1,0 +1,2 @@
+FROM registry:5000/library/tomcat:lastest
+ADD ./admin-billing-ui.war /usr/local/tomcat/webapps

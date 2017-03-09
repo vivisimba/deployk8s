@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: partner-service
+  namespace: kube-system
+  labels:
+    name: partner-s
+spec:
+  selector:
+    name: partner-service
+  ports:
+  - port: 8080
+    targetPort: 8080

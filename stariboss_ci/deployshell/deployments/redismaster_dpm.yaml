@@ -1,0 +1,39 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: redismaster
+  namespace: {NAME_SPACE}
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels: 
+        name: redismaster
+        tier: backend
+        subsystem: platform
+        version: 0.4.12
+        partition: "no"
+    spec:
+      imagePullSecrets:
+      - name: mysecret
+      restartPolicy: Always
+      containers:
+      - name: redismaster
+        image: 10.0.251.196/platform/redis:3.0.7
+        imagePullPolicy: Always
+        args: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+        volumeMounts:
+          - mountPath: /usr/local/etc/redis/redis.conf
+            name: masterconf
+        env: 
+          - name: TZ
+            value: Asia/Shanghai
+        ports:
+        - containerPort: 6380
+          name: redismaster
+          protocol: TCP
+      dnsPolicy: ClusterFirst
+      volumes:
+      - name: masterconf
+        hostPath:
+          path: {NFS_HOST_DIR}/redis/master/6380.conf

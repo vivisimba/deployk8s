@@ -1,0 +1,39 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: mysql
+  namespace: {NAME_SPACE}
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels: 
+        name: mysql
+        version: 5.5.53
+        tier: backend
+        subsystem: platform
+        partition: "no"
+    spec:
+      imagePullSecrets:
+      - name: mysecret
+      restartPolicy: Always
+      containers:
+      - name: mysql
+        image: 10.0.251.196/platform/mysql:5.5.53
+        volumeMounts:
+          - mountPath: /var/lib/mysql
+            name: mysql
+        env: 
+          - name: TZ
+            value: Asia/Shanghai
+          - name: MYSQL_ROOT_PASSWORD
+            value: "123456"
+        ports:
+        - containerPort: 3306
+          name: mysql
+          protocol: TCP
+      dnsPolicy: ClusterFirst
+      volumes:
+      - name: mysql
+        hostPath:
+          path: {NFS_HOST_DIR}/mysql

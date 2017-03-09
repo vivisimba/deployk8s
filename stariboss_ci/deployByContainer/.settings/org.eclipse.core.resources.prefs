@@ -1,0 +1,11 @@
+eclipse.preferences.version=1
+encoding//src/config/config.py=utf-8
+encoding//src/deployByContainer.py=utf-8
+encoding//src/exception/myException.py=utf-8
+encoding//src/fileDispose.py=utf-8
+encoding//src/manageContainerMachine.py=utf-8
+encoding//src/remoteShell.py=utf-8
+encoding//src/test.py=utf-8
+encoding//src/utils/util.py=utf-8
+encoding//src/vmManager.py=utf-8
+encoding//src/vmSnapshotOperation.py=utf-8

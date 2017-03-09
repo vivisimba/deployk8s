@@ -1,0 +1,22 @@
+FROM docker.io/centos:latest
+RUN yum update -y && \
+    yum install -y epel-release && \
+    yum install --enablerepo=epel openssh-server wget tar gcc jemalloc.x86_64 jemalloc-devel.x86_64 -y
+RUN yum clean all
+RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key
+RUN ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key
+RUN echo "root:123456"|chpasswd
+RUN sed -ri 's/^PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config
+RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
+#Java
+ADD jdk1.8.0_66 /usr/local/jdk
+RUN touch  /etc/profile.d/java.sh
+RUN echo "JAVA_HOME=/usr/local/jdk" >> /etc/profile.d/java.sh
+RUN echo "JAVA_BIN=/usr/local/jdk/bin" >> /etc/profile.d/java.sh
+RUN echo "JRE_HOME=/usr/local/jdk/jre" >> /etc/profile.d/java.sh
+RUN echo "PATH=$PATH:/usr/local/jdk/bin:/usr/local/jdk/jre/bin" >> /etc/profile.d/java.sh
+RUN echo "CLASSPATH=/usr/local/jdk/jre/lib:/usr/local/jdk/lib:/usr/local/jdk/jre/lib/charsets.jar" >> /etc/profile.d/java.sh
+RUN . /etc/profile.d/java.sh
+#Starup
+EXPOSE 22
+CMD ["/usr/sbin/sshd","-D"]

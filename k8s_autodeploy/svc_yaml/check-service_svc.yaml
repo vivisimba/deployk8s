@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: check-service
+  namespace: kube-system
+  labels:
+    name: check-s
+spec:
+  selector:
+    name: check-service
+  ports:
+  - port: 8080
+    targetPort: 8080

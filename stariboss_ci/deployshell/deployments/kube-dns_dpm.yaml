@@ -1,0 +1,55 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: kube-dns
+  namespace: kube-system
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        k8s-app: kube-dns
+        version: v9
+        tier: backend
+        subsystem: platform
+        partition: "no"
+        kubernetes.io/cluster-service: "true"
+    spec:
+      imagePullSecrets:
+      - name: systemsecret
+      containers:
+      - name: kube2sky
+        image: 10.0.251.196/platform/kube2sky:1.11
+        resources:
+          limits:
+            cpu: 100m
+            memory: 50Mi
+        args:
+        # ���޸�
+        - -domain=sunt110
+        # ���޸�
+        - --kube_master_url=http://10.0.251.110:8080
+        # ���޸�
+        - -etcd-server=http://10.0.251.110:2379
+      - name: skydns
+        image: 10.0.251.196/platform/skydns:2015-10-13-8c72f8c 
+        resources:
+          limits:
+            cpu: 100m
+            memory: 50Mi
+        args:
+        # command = "/skydns"
+        # ���޸�
+        - -machines=http://10.0.251.110:2379
+        - -addr=0.0.0.0:53
+        - -ns-rotate=false
+        # ���޸�
+        - -domain=sunt110.
+        ports:
+        - containerPort: 53
+          name: dns
+          protocol: UDP
+        - containerPort: 53
+          name: dns-tcp
+          protocol: TCP
+      dnsPolicy: Default  # Don't use cluster DNS.

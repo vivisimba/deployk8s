@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: swagger-ui
+  namespace: {NAME_SPACE}
+  labels:
+    name: swagger-ui
+spec:
+  replicas: 1
+  selector:
+    name: swagger-ui
+  template:
+    metadata:
+      labels: 
+        name: swagger-ui
+    spec:
+      imagePullSecrets:
+      - name: mysecret
+      restartPolicy: Always
+      containers:
+      - name: swagger-ui
+        image: 10.0.251.196/platform/swagger-ui:basal
+        imagePullPolicy: Always
+        volumeMounts:
+          - mountPath: /usr/share/nginx/html/index.html
+            name: swagger-ui-config
+        env: 
+          - name: TZ
+            value: Asia/Shanghai
+        ports:
+        - containerPort: 8080
+          name: swagger-ui
+          protocol: TCP
+      dnsPolicy: ClusterFirst
+      volumes:
+      - name: swagger-ui-config
+        hostPath:
+          path: {NFS_HOST_DIR}/swagger/ui/conf/index.html

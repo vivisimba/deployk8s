@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: pushzkconfig
+  namespace: kube-system
+  labels:
+    name: pushzkconfig
+spec:
+  replicas: 1
+  selector:
+    name: pushzkconfig
+  template:
+    metadata:
+      labels: 
+        name: pushzkconfig
+    spec:
+      restartPolicy: OnFailure
+      containers:
+      - name: pushzkconfig
+        image: registry:5000/library/pushzkconfig:basal
+        imagePullPolicy: Always
+        command: ["sh"]
+        args: ["/platform-config/bin/platform-config"]
+        volumeMounts:
+          - mountPath: /platform-config
+            name: zkconfig
+        env: 
+          - name: TZ
+            value: Asia/Shanghai
+        ports:
+        - containerPort: 8080
+          name: pushzk
+          protocol: TCP
+      dnsPolicy: ClusterFirst
+      volumes:
+      - name: zkconfig
+        hostPath:
+          path: /platform-config

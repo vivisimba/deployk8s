@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: problem-center-service
+  namespace: {NAME_SPACE}
+  labels:
+    name: problem-center-s
+spec:
+  selector:
+    name: problem-center-service
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 8080
+    nodePort: 30246

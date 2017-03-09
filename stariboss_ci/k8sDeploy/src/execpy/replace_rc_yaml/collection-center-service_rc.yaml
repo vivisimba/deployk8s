@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: collection-center-s
+  namespace: kube-system
+  labels:
+    name: collection-center-s
+spec:
+  replicas: 1
+  selector:
+    name: collection-center-s
+  template:
+    metadata:
+      labels: 
+        name: collection-center-s
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: collection-center-s
+        image: registry:5000/library/collection-center-service:BUILDTAG_7.1.1-148-161009
+        env: 
+          - name: TZ
+            value: Asia/Shanghai
+        ports:
+        - containerPort: 8080
+          name: collection-c
+          protocol: TCP
+      dnsPolicy: ClusterFirst

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: card-center-service
+  namespace: kube-system
+  labels:
+    name: card-center-s
+spec:
+  selector:
+    name: card-center-service
+  ports:
+  - port: 8080
+    targetPort: 8080

@@ -1,0 +1,12 @@
+FROM registry:5000/library/bossos:latest
+RUN yum install -y net-tools
+#dubbo
+COPY dubbo-monitor-simple-2.8.4.tar.gz /usr/local/src/dubbo-monitor-simple-2.8.4.tar.gz
+RUN cd /usr/local/src \
+    && tar zxf dubbo-monitor-simple-2.8.4.tar.gz \
+    && mv dubbo-monitor-simple-2.8.4 /usr/local/dubbo-monitor \
+    && chmod 755 /usr/local/dubbo-monitor/bin/*
+#Starup
+ENTRYPOINT /usr/local/dubbo-monitor/bin/start.sh && /usr/sbin/sshd -D
+EXPOSE 22 8090 7070 
+

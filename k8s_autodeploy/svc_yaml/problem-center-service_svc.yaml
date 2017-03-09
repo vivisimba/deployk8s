@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: problem-center-service
+  namespace: kube-system
+  labels:
+    name: problem-center-s
+spec:
+  selector:
+    name: problem-center-service
+  ports:
+  - port: 8080
+    targetPort: 8080

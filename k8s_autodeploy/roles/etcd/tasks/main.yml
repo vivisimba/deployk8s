@@ -1,0 +1,12 @@
+---
+- name: Install etcd
+  yum: name=etcd state=latest
+
+- name: Configure etcd
+  template: src=etcd.conf.j2 dest=/etc/etcd/etcd.conf
+ 
+- name: Restart etcd
+  service: name=etcd state=restarted
+  
+- name: Update ETCD DNS configuration
+  command: etcdctl mk /skydns/config '{"dns-addr":"{{ dns_server }}:53","ttl":3600,"domain":"{{ dns_domain }}."}'  

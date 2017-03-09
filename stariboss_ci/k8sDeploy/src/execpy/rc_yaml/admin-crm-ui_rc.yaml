@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: admin-crm-ui
+  namespace: {NAME_SPACE}
+  labels:
+    name: admin-crm-ui
+spec:
+  replicas: 1
+  selector:
+    name: admin-crm-ui
+  template:
+    metadata:
+      labels: 
+        name: admin-crm-ui
+    spec:
+      imagePullSecrets:
+      - name: mysecret
+      restartPolicy: Always
+      containers:
+      - name: admin-crm-ui
+        image: 10.0.251.196/boss/admin-crm-ui:{IMAGE_TAG}
+        volumeMounts:
+          - mountPath: {NFS_CONTAINER_DIR}
+            name: nfs
+        imagePullPolicy: Always
+        env: 
+          - name: TZ
+            value: Asia/Shanghai
+        ports:
+        - containerPort: 8080
+          name: a-crm-ui
+          protocol: TCP
+      dnsPolicy: ClusterFirst
+      volumes:
+      - name: nfs
+        hostPath:
+          path: {NFS_HOST_DIR}

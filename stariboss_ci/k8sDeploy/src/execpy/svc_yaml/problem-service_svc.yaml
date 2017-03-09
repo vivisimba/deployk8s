@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: problem-service
+  namespace: {NAME_SPACE}
+  labels:
+    name: problem-s
+spec:
+  selector:
+    name: problem-service
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 8080
+    nodePort: 30247

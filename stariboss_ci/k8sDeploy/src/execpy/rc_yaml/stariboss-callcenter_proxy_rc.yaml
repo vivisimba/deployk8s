@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: stariboss-callcenter-proxy
+  namespace: {NAME_SPACE}
+  labels:
+    name: stariboss-callcenter-proxy
+spec:
+  replicas: 1
+  selector:
+    name: stariboss-callcenter-proxy
+  template:
+    metadata:
+      labels: 
+        name: stariboss-callcenter-proxy
+    spec:
+      imagePullSecrets:
+      - name: mysecret
+      restartPolicy: Always
+      containers:
+      - name: stariboss-callcenter-proxy
+        image: 10.0.251.196/boss/stariboss-callcenter_proxy:{IMAGE_TAG}
+        volumeMounts:
+          - mountPath: {NFS_CONTAINER_DIR}
+            name: nfs
+        imagePullPolicy: Always
+        env: 
+          - name: TZ
+            value: Asia/Shanghai
+        ports:
+        - containerPort: 8080
+          name: stariboss-cc-pr
+          protocol: TCP
+      dnsPolicy: ClusterFirst
+      volumes:
+      - name: nfs
+        hostPath:
+          path: {NFS_HOST_DIR}

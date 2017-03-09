@@ -1,0 +1,34 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: pushzkconfig
+  namespace: {NAME_SPACE}
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels: 
+        name: pushzkconfig
+    spec:
+      imagePullSecrets:
+      - name: mysecret
+      restartPolicy: Always
+      containers:
+      - name: pushzkconfig
+        image: 10.0.251.196/platform/pushzkconfig:basal
+        imagePullPolicy: Always
+        volumeMounts: 
+          - mountPath: /platform-config
+            name: zkconfig
+        env: 
+          - name: TZ
+            value: Asia/Shanghai
+        ports:
+        - containerPort: 8080
+          name: pushzk
+          protocol: TCP
+      dnsPolicy: ClusterFirst
+      volumes:
+      - name: zkconfig
+        hostPath:
+          path: {NFS_HOST_DIR}/zkconfig/platform-config

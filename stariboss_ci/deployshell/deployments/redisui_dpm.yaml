@@ -1,0 +1,33 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: redisui
+  namespace: {NAME_SPACE}
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels: 
+        name: redisui
+        tier: frontend
+        subsystem: platform
+        version: {VERSION}
+        partition: "no"
+    spec:
+      imagePullSecrets:
+      - name: mysecret
+      restartPolicy: Always
+      containers:
+      - name: redisui
+        image: 10.0.251.196/platform/redis-stat:0.4.12
+        imagePullPolicy: Always
+        command: ["/usr/bin/redis-stat"]
+        args: ["--server=63790","redismaster:6380 redisslave:6381 redis1:26379"]
+        env: 
+          - name: TZ
+            value: Asia/Shanghai
+        ports:
+        - containerPort: 63790
+          name: redisui
+          protocol: TCP
+      dnsPolicy: ClusterFirst

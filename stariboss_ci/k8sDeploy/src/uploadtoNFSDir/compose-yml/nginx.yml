@@ -1,0 +1,15 @@
+naginx:
+  image: 10.0.251.196/platform/nginx:stable-alpine
+  privileged: false
+  restart: always
+  #command: sh -c "sed -e 's/$${HOST_IP}/${HOST_IP}/g' /etc/nginx/nginx_origin.conf > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"
+  command: sh -c "sed -e 's/{NODE_IP}/'${NODE_IP}'/g' -e 's/{MASTER_IP}/'${MASTER_IP}'/g' /etc/nginx/nginx-origin.conf > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"
+  ports:
+  - 80:80
+  volumes:
+  - ${NFS_DIR}/nginx/config/nginx.conf:/etc/nginx/nginx-origin.conf
+  - ${NFS_DIR}/nginx/logs:/var/log/nginx
+  - ${NFS_DIR}/nginx/config/default.conf:/etc/nginx/conf.d/default.conf
+  - ${NFS_DIR}/nginx/cache:/home/cache
+  environment:
+  - TZ=Asia/Shanghai

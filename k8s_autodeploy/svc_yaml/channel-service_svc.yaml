@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: channel-service
+  namespace: kube-system
+  labels:
+    name: channel-s
+spec:
+  selector:
+    name: channel-service
+  ports:
+  - port: 8080
+    targetPort: 8080

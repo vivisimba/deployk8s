@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: account-center-s
+  namespace: kube-system
+  labels:
+    name: account-center-s
+spec:
+  replicas: 1
+  selector:
+    name: account-center-s
+  template:
+    metadata:
+      labels: 
+        name: account-center-s
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: account-center-s
+        imagePullPolicy: Always
+        image: registry:5000/library/account-center-service:BUILDTAG_7.1.1-148-161009
+        env: 
+          - name: TZ
+            value: Asia/Shanghai
+        ports:
+        - containerPort: 8080
+          name: account-c
+          protocol: TCP
+      dnsPolicy: ClusterFirst

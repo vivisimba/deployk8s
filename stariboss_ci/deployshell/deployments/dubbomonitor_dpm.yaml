@@ -1,0 +1,45 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: dubbomonitor
+  namespace: {NAME_SPACE}
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels: 
+        name: dubbomonitor
+        tier: frontend
+        subsystem: platform
+        version: 2.8.4
+        partition: "no"
+    spec:
+      imagePullSecrets:
+      - name: mysecret
+      restartPolicy: Always
+      containers:
+      - name: dubbomonitor
+        image: 10.0.251.196/platform/dubbo-monitor:2.8.4
+        imagePullPolicy: Always
+        volumeMounts:
+          - name: dubboconfig
+            mountPath: /usr/local/tomcat/webapps/dubbo-monitor/WEB-INF/classes/application.properties
+          - name: tomcatlogs
+            mountPath: /usr/local/tomcat/logs
+        env: 
+          - name: TZ
+            value: Asia/Shanghai
+          - name: JAVA_OPTS
+            value: '-Xmx512m'
+        ports:
+        - containerPort: 8080
+          name: dubbomonitor
+          protocol: TCP
+      dnsPolicy: ClusterFirst
+      volumes:
+      - name: dubboconfig
+        hostPath:
+          path: {NFS_HOST_DIR}/dubbomonitor/dubbo-monitor/WEB-INF/classes/application.properties
+      - name: tomcatlogs
+        hostPath:
+          path: {NFS_HOST_DIR}/moduleLogs/dubbo-monitor/logs/

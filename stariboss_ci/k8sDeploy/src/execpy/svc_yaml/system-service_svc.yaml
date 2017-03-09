@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: system-service
+  namespace: {NAME_SPACE}
+  labels:
+    name: system-s
+spec:
+  selector:
+    name: system-service
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 8080
+    nodePort: 30212

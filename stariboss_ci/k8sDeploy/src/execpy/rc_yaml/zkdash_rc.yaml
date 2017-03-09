@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: zkdash
+  namespace: {NAME_SPACE}
+  labels:
+    name: zkdash
+spec:
+  replicas: 1
+  selector:
+    name: zkdash
+  template:
+    metadata:
+      labels: 
+        name: zkdash
+    spec:
+      imagePullSecrets:
+      - name: mysecret
+      restartPolicy: Always
+      containers:
+      - name: zkdash
+        image: 10.0.251.196/platform/zkdash:2.0.0
+        imagePullPolicy: Always
+        volumeMounts:
+          - mountPath: /simba/zkdash/conf/conf.yml
+            name: zkdashconf
+        env: 
+          - name: TZ
+            value: Asia/Shanghai
+        ports:
+        - containerPort: 8888
+          name: zkdash
+          protocol: TCP
+      dnsPolicy: ClusterFirst
+      volumes:
+      - name: zkdashconf
+        hostPath:
+          path: {NFS_HOST_DIR}/zkdashconf/conf.yml

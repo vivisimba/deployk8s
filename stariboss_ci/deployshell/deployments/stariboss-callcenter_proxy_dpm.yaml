@@ -1,0 +1,45 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: stariboss-callcenter-proxy
+  namespace: {NAME_SPACE}
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels: 
+        name: stariboss-callcenter-proxy
+        tier: backend
+        subsystem: unconfirmed
+        version: {VERSION}
+        partition: "no"
+    spec:
+      imagePullSecrets:
+      - name: mysecret
+      restartPolicy: Always
+      containers:
+      - name: stariboss-callcenter-proxy
+        image: 10.0.251.196/boss/stariboss-callcenter_proxy:{IMAGE_TAG}
+        volumeMounts:
+          - mountPath: {NFS_CONTAINER_DIR}
+            name: nfs
+          - mountPath: /usr/local/tomcat/logs/
+            name: tomcatlogs
+        imagePullPolicy: Always
+        env: 
+          - name: TZ
+            value: Asia/Shanghai
+          - name: equipmentId
+            value: "1"
+        ports:
+        - containerPort: 8080
+          name: stariboss-c-p
+          protocol: TCP
+      dnsPolicy: ClusterFirst
+      volumes:
+      - name: nfs
+        hostPath:
+          path: {NFS_HOST_DIR}
+      - name: tomcatlogs
+        hostPath:
+          path: {NFS_HOST_DIR}/moduleLogs/stariboss-callcenter_proxy/logs/

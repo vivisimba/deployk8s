@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: redisslave
+  namespace: kube-system
+  labels:
+    name: redisslave
+spec:
+  replicas: 1
+  selector:
+    name: redisslave
+  template:
+    metadata:
+      labels: 
+        name: redisslave
+    spec:
+      volumes:
+      - name: slaveconf
+        hostPath:
+          path: /redis/slave/6381.conf
+      restartPolicy: Always
+      dnsPolicy: ClusterFirst
+      containers:
+      - name: redisslave
+        image: registry:5000/library/redis:basal
+        args: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+        volumeMounts:
+          - name: slaveconf
+            mountPath: /usr/local/etc/redis/redis.conf
+        env: 
+          - name: TZ
+            value: Asia/Shanghai
+        ports:
+        - containerPort: 6381
+          name: redisslave
+          protocol: TCP

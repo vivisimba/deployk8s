@@ -1,0 +1,16 @@
+FROM registry:5000/library/bossos:latest
+#Tomcat
+WORKDIR /usr/local/src
+RUN wget http://apache.fayea.com/tomcat/tomcat-8/v8.0.33/bin/apache-tomcat-8.0.33.tar.gz
+RUN tar -zxf apache-tomcat-8.0.33.tar.gz \
+    && mv apache-tomcat-8.0.33 /usr/local/tomcat
+WORKDIR /usr/local/tomcat/bin
+RUN cp  /usr/local/tomcat/bin/catalina.sh  /usr/local/tomcat/bin/catalina.sh.bak
+RUN > /usr/local/tomcat/bin/catalina.sh
+RUN echo '#!/bin/sh'>> /usr/local/tomcat/bin/catalina.sh
+RUN echo "JAVA_HOME=/usr/local/jdk">> /usr/local/tomcat/bin/catalina.sh
+RUN echo "CATALINA_HOME=/usr/local/tomcat" >>  /usr/local/tomcat/bin/catalina.sh
+RUN grep -v '^#!/bin/sh' catalina.sh.bak >>  /usr/local/tomcat/bin/catalina.sh
+ENTRYPOINT /usr/local/tomcat/bin/catalina.sh start && /usr/sbin/sshd -D
+#Starup
+EXPOSE 8080 22

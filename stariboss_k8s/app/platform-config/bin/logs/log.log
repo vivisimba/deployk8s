@@ -1,0 +1,228 @@
+2016-05-25 14:47:27  [ main:0 ] - [ INFO ]  Starting
+2016-05-25 14:47:27  [ main:4 ] - [ DEBUG ]  Starting
+2016-05-25 14:47:27  [ main:4 ] - [ DEBUG ]  Starting
+2016-05-25 14:47:27  [ main:5 ] - [ DEBUG ]  reset
+2016-05-25 14:47:27  [ main:9 ] - [ INFO ]  Client environment:zookeeper.version=3.4.6-1569965, built on 02/20/2014 09:09 GMT
+2016-05-25 14:47:27  [ main:9 ] - [ INFO ]  Client environment:host.name=k8s-master
+2016-05-25 14:47:27  [ main:9 ] - [ INFO ]  Client environment:java.version=1.8.0_91
+2016-05-25 14:47:27  [ main:10 ] - [ INFO ]  Client environment:java.vendor=Oracle Corporation
+2016-05-25 14:47:27  [ main:10 ] - [ INFO ]  Client environment:java.home=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.91-0.b14.el7_2.x86_64/jre
+2016-05-25 14:47:27  [ main:10 ] - [ INFO ]  Client environment:java.class.path=/root/stariboss_k8s/app/platform-config/lib/platform-config.jar:/root/stariboss_k8s/app/platform-config/lib/curator-client-2.8.0.jar:/root/stariboss_k8s/app/platform-config/lib/curator-framework-2.8.0.jar:/root/stariboss_k8s/app/platform-config/lib/curator-recipes-2.8.0.jar:/root/stariboss_k8s/app/platform-config/lib/guava-19.0.jar:/root/stariboss_k8s/app/platform-config/lib/groovy-all-2.4.6.jar:/root/stariboss_k8s/app/platform-config/lib/log4j-1.2.17.jar:/root/stariboss_k8s/app/platform-config/lib/slf4j-log4j12-1.7.5.jar:/root/stariboss_k8s/app/platform-config/lib/slf4j-api-1.7.12.jar:/root/stariboss_k8s/app/platform-config/lib/zookeeper-3.4.6.jar:/root/stariboss_k8s/app/platform-config/lib/jline-0.9.94.jar:/root/stariboss_k8s/app/platform-config/lib/netty-3.7.0.Final.jar
+2016-05-25 14:47:27  [ main:10 ] - [ INFO ]  Client environment:java.library.path=/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+2016-05-25 14:47:27  [ main:10 ] - [ INFO ]  Client environment:java.io.tmpdir=/tmp
+2016-05-25 14:47:27  [ main:10 ] - [ INFO ]  Client environment:java.compiler=<NA>
+2016-05-25 14:47:27  [ main:10 ] - [ INFO ]  Client environment:os.name=Linux
+2016-05-25 14:47:27  [ main:10 ] - [ INFO ]  Client environment:os.arch=amd64
+2016-05-25 14:47:27  [ main:11 ] - [ INFO ]  Client environment:os.version=3.10.0-327.18.2.el7.x86_64
+2016-05-25 14:47:27  [ main:12 ] - [ INFO ]  Client environment:user.name=root
+2016-05-25 14:47:27  [ main:12 ] - [ INFO ]  Client environment:user.home=/root
+2016-05-25 14:47:27  [ main:12 ] - [ INFO ]  Client environment:user.dir=/root/stariboss_k8s/app/platform-config/bin
+2016-05-25 14:47:27  [ main:12 ] - [ INFO ]  Initiating client connection, connectString=zookeeper1:2181 sessionTimeout=60000 watcher=org.apache.curator.ConnectionState@3ab39c39
+2016-05-25 14:47:27  [ main:14 ] - [ DEBUG ]  zookeeper.disableAutoWatchReset is false
+2016-05-25 14:47:27  [ main-SendThread(k8s-node1:2181):24 ] - [ INFO ]  Opening socket connection to server k8s-node1/10.0.251.165:2181. Will not attempt to authenticate using SASL (unknown error)
+2016-05-25 14:47:27  [ main-SendThread(k8s-node1:2181):65 ] - [ INFO ]  Socket connection established to k8s-node1/10.0.251.165:2181, initiating session
+2016-05-25 14:47:27  [ main-SendThread(k8s-node1:2181):67 ] - [ DEBUG ]  Session establishment request sent on k8s-node1/10.0.251.165:2181
+2016-05-25 14:47:31  [ main-SendThread(k8s-node1:2181):3817 ] - [ WARN ]  Session 0x0 for server k8s-node1/10.0.251.165:2181, unexpected error, closing socket connection and attempting reconnect
+java.io.IOException: Connection reset by peer
+	at sun.nio.ch.FileDispatcherImpl.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:39)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:192)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:380)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doIO(ClientCnxnSocketNIO.java:68)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:366)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1081)
+2016-05-25 14:47:33  [ main-SendThread(k8s-node1:2181):5385 ] - [ INFO ]  Opening socket connection to server k8s-node1/10.0.251.165:2181. Will not attempt to authenticate using SASL (unknown error)
+2016-05-25 14:47:33  [ main-SendThread(k8s-node1:2181):5386 ] - [ INFO ]  Socket connection established to k8s-node1/10.0.251.165:2181, initiating session
+2016-05-25 14:47:33  [ main-SendThread(k8s-node1:2181):5386 ] - [ DEBUG ]  Session establishment request sent on k8s-node1/10.0.251.165:2181
+2016-05-25 14:47:36  [ main-SendThread(k8s-node1:2181):9137 ] - [ WARN ]  Session 0x0 for server k8s-node1/10.0.251.165:2181, unexpected error, closing socket connection and attempting reconnect
+java.io.IOException: Connection reset by peer
+	at sun.nio.ch.FileDispatcherImpl.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:39)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:192)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:380)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doIO(ClientCnxnSocketNIO.java:68)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:366)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1081)
+2016-05-25 14:47:38  [ main-SendThread(k8s-node1:2181):10389 ] - [ INFO ]  Opening socket connection to server k8s-node1/10.0.251.165:2181. Will not attempt to authenticate using SASL (unknown error)
+2016-05-25 14:47:38  [ main-SendThread(k8s-node1:2181):10390 ] - [ INFO ]  Socket connection established to k8s-node1/10.0.251.165:2181, initiating session
+2016-05-25 14:47:38  [ main-SendThread(k8s-node1:2181):10390 ] - [ DEBUG ]  Session establishment request sent on k8s-node1/10.0.251.165:2181
+2016-05-25 14:47:41  [ main-SendThread(k8s-node1:2181):14141 ] - [ WARN ]  Session 0x0 for server k8s-node1/10.0.251.165:2181, unexpected error, closing socket connection and attempting reconnect
+java.io.IOException: Connection reset by peer
+	at sun.nio.ch.FileDispatcherImpl.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:39)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:192)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:380)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doIO(ClientCnxnSocketNIO.java:68)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:366)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1081)
+2016-05-25 14:47:44  [ main-SendThread(k8s-node1:2181):16216 ] - [ INFO ]  Opening socket connection to server k8s-node1/10.0.251.165:2181. Will not attempt to authenticate using SASL (unknown error)
+2016-05-25 14:47:44  [ main-SendThread(k8s-node1:2181):16217 ] - [ INFO ]  Socket connection established to k8s-node1/10.0.251.165:2181, initiating session
+2016-05-25 14:47:44  [ main-SendThread(k8s-node1:2181):16217 ] - [ DEBUG ]  Session establishment request sent on k8s-node1/10.0.251.165:2181
+2016-05-25 14:47:47  [ main-SendThread(k8s-node1:2181):19968 ] - [ WARN ]  Session 0x0 for server k8s-node1/10.0.251.165:2181, unexpected error, closing socket connection and attempting reconnect
+java.io.IOException: Connection reset by peer
+	at sun.nio.ch.FileDispatcherImpl.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:39)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:192)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:380)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doIO(ClientCnxnSocketNIO.java:68)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:366)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1081)
+2016-05-25 14:47:49  [ main-SendThread(k8s-node1:2181):21890 ] - [ INFO ]  Opening socket connection to server k8s-node1/10.0.251.165:2181. Will not attempt to authenticate using SASL (unknown error)
+2016-05-25 14:47:49  [ main-SendThread(k8s-node1:2181):21891 ] - [ INFO ]  Socket connection established to k8s-node1/10.0.251.165:2181, initiating session
+2016-05-25 14:47:49  [ main-SendThread(k8s-node1:2181):21891 ] - [ DEBUG ]  Session establishment request sent on k8s-node1/10.0.251.165:2181
+2016-05-25 14:47:53  [ main-SendThread(k8s-node1:2181):25643 ] - [ WARN ]  Session 0x0 for server k8s-node1/10.0.251.165:2181, unexpected error, closing socket connection and attempting reconnect
+java.io.IOException: Connection reset by peer
+	at sun.nio.ch.FileDispatcherImpl.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:39)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:192)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:380)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doIO(ClientCnxnSocketNIO.java:68)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:366)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1081)
+2016-05-25 14:47:55  [ main-SendThread(k8s-node1:2181):27238 ] - [ INFO ]  Opening socket connection to server k8s-node1/10.0.251.165:2181. Will not attempt to authenticate using SASL (unknown error)
+2016-05-25 14:47:55  [ main-SendThread(k8s-node1:2181):27238 ] - [ INFO ]  Socket connection established to k8s-node1/10.0.251.165:2181, initiating session
+2016-05-25 14:47:55  [ main-SendThread(k8s-node1:2181):27239 ] - [ DEBUG ]  Session establishment request sent on k8s-node1/10.0.251.165:2181
+2016-05-25 14:47:58  [ main-SendThread(k8s-node1:2181):30990 ] - [ WARN ]  Session 0x0 for server k8s-node1/10.0.251.165:2181, unexpected error, closing socket connection and attempting reconnect
+java.io.IOException: Connection reset by peer
+	at sun.nio.ch.FileDispatcherImpl.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:39)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:192)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:380)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doIO(ClientCnxnSocketNIO.java:68)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:366)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1081)
+2016-05-25 14:48:00  [ main-SendThread(k8s-node1:2181):32209 ] - [ INFO ]  Opening socket connection to server k8s-node1/10.0.251.165:2181. Will not attempt to authenticate using SASL (unknown error)
+2016-05-25 14:48:00  [ main-SendThread(k8s-node1:2181):32209 ] - [ INFO ]  Socket connection established to k8s-node1/10.0.251.165:2181, initiating session
+2016-05-25 14:48:00  [ main-SendThread(k8s-node1:2181):32210 ] - [ DEBUG ]  Session establishment request sent on k8s-node1/10.0.251.165:2181
+2016-05-25 15:00:00  [ main:0 ] - [ INFO ]  Starting
+2016-05-25 15:00:00  [ main:4 ] - [ DEBUG ]  Starting
+2016-05-25 15:00:00  [ main:4 ] - [ DEBUG ]  Starting
+2016-05-25 15:00:00  [ main:6 ] - [ DEBUG ]  reset
+2016-05-25 15:00:00  [ main:9 ] - [ INFO ]  Client environment:zookeeper.version=3.4.6-1569965, built on 02/20/2014 09:09 GMT
+2016-05-25 15:00:00  [ main:9 ] - [ INFO ]  Client environment:host.name=k8s-master
+2016-05-25 15:00:00  [ main:10 ] - [ INFO ]  Client environment:java.version=1.8.0_91
+2016-05-25 15:00:00  [ main:10 ] - [ INFO ]  Client environment:java.vendor=Oracle Corporation
+2016-05-25 15:00:00  [ main:10 ] - [ INFO ]  Client environment:java.home=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.91-0.b14.el7_2.x86_64/jre
+2016-05-25 15:00:00  [ main:10 ] - [ INFO ]  Client environment:java.class.path=/root/stariboss_k8s/app/platform-config/lib/platform-config.jar:/root/stariboss_k8s/app/platform-config/lib/curator-client-2.8.0.jar:/root/stariboss_k8s/app/platform-config/lib/curator-framework-2.8.0.jar:/root/stariboss_k8s/app/platform-config/lib/curator-recipes-2.8.0.jar:/root/stariboss_k8s/app/platform-config/lib/guava-19.0.jar:/root/stariboss_k8s/app/platform-config/lib/groovy-all-2.4.6.jar:/root/stariboss_k8s/app/platform-config/lib/log4j-1.2.17.jar:/root/stariboss_k8s/app/platform-config/lib/slf4j-log4j12-1.7.5.jar:/root/stariboss_k8s/app/platform-config/lib/slf4j-api-1.7.12.jar:/root/stariboss_k8s/app/platform-config/lib/zookeeper-3.4.6.jar:/root/stariboss_k8s/app/platform-config/lib/jline-0.9.94.jar:/root/stariboss_k8s/app/platform-config/lib/netty-3.7.0.Final.jar
+2016-05-25 15:00:00  [ main:10 ] - [ INFO ]  Client environment:java.library.path=/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+2016-05-25 15:00:00  [ main:10 ] - [ INFO ]  Client environment:java.io.tmpdir=/tmp
+2016-05-25 15:00:00  [ main:10 ] - [ INFO ]  Client environment:java.compiler=<NA>
+2016-05-25 15:00:00  [ main:11 ] - [ INFO ]  Client environment:os.name=Linux
+2016-05-25 15:00:00  [ main:11 ] - [ INFO ]  Client environment:os.arch=amd64
+2016-05-25 15:00:00  [ main:11 ] - [ INFO ]  Client environment:os.version=3.10.0-327.18.2.el7.x86_64
+2016-05-25 15:00:00  [ main:12 ] - [ INFO ]  Client environment:user.name=root
+2016-05-25 15:00:00  [ main:12 ] - [ INFO ]  Client environment:user.home=/root
+2016-05-25 15:00:00  [ main:12 ] - [ INFO ]  Client environment:user.dir=/root/stariboss_k8s/app/platform-config/bin
+2016-05-25 15:00:00  [ main:13 ] - [ INFO ]  Initiating client connection, connectString=zookeeper1:2181 sessionTimeout=60000 watcher=org.apache.curator.ConnectionState@3ab39c39
+2016-05-25 15:00:01  [ main:15 ] - [ DEBUG ]  zookeeper.disableAutoWatchReset is false
+2016-05-25 15:00:01  [ main-SendThread(k8s-node1:2181):25 ] - [ INFO ]  Opening socket connection to server k8s-node1/10.0.251.165:2181. Will not attempt to authenticate using SASL (unknown error)
+2016-05-25 15:00:01  [ main-SendThread(k8s-node1:2181):65 ] - [ INFO ]  Socket connection established to k8s-node1/10.0.251.165:2181, initiating session
+2016-05-25 15:00:01  [ main-SendThread(k8s-node1:2181):66 ] - [ DEBUG ]  Session establishment request sent on k8s-node1/10.0.251.165:2181
+2016-05-25 15:00:04  [ main-SendThread(k8s-node1:2181):3818 ] - [ WARN ]  Session 0x0 for server k8s-node1/10.0.251.165:2181, unexpected error, closing socket connection and attempting reconnect
+java.io.IOException: Connection reset by peer
+	at sun.nio.ch.FileDispatcherImpl.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:39)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:192)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:380)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doIO(ClientCnxnSocketNIO.java:68)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:366)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1081)
+2016-05-25 15:00:06  [ main-SendThread(k8s-node1:2181):5369 ] - [ INFO ]  Opening socket connection to server k8s-node1/10.0.251.165:2181. Will not attempt to authenticate using SASL (unknown error)
+2016-05-25 15:00:06  [ main-SendThread(k8s-node1:2181):5370 ] - [ INFO ]  Socket connection established to k8s-node1/10.0.251.165:2181, initiating session
+2016-05-25 15:00:06  [ main-SendThread(k8s-node1:2181):5370 ] - [ DEBUG ]  Session establishment request sent on k8s-node1/10.0.251.165:2181
+2016-05-25 16:46:56  [ main:0 ] - [ INFO ]  Starting
+2016-05-25 16:46:56  [ main:4 ] - [ DEBUG ]  Starting
+2016-05-25 16:46:56  [ main:4 ] - [ DEBUG ]  Starting
+2016-05-25 16:46:56  [ main:6 ] - [ DEBUG ]  reset
+2016-05-25 16:46:56  [ main:9 ] - [ INFO ]  Client environment:zookeeper.version=3.4.6-1569965, built on 02/20/2014 09:09 GMT
+2016-05-25 16:46:56  [ main:9 ] - [ INFO ]  Client environment:host.name=k8s-master
+2016-05-25 16:46:56  [ main:10 ] - [ INFO ]  Client environment:java.version=1.8.0_91
+2016-05-25 16:46:56  [ main:10 ] - [ INFO ]  Client environment:java.vendor=Oracle Corporation
+2016-05-25 16:46:56  [ main:10 ] - [ INFO ]  Client environment:java.home=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.91-0.b14.el7_2.x86_64/jre
+2016-05-25 16:46:56  [ main:10 ] - [ INFO ]  Client environment:java.class.path=/root/stariboss_k8s/app/platform-config/lib/platform-config.jar:/root/stariboss_k8s/app/platform-config/lib/curator-client-2.8.0.jar:/root/stariboss_k8s/app/platform-config/lib/curator-framework-2.8.0.jar:/root/stariboss_k8s/app/platform-config/lib/curator-recipes-2.8.0.jar:/root/stariboss_k8s/app/platform-config/lib/guava-19.0.jar:/root/stariboss_k8s/app/platform-config/lib/groovy-all-2.4.6.jar:/root/stariboss_k8s/app/platform-config/lib/log4j-1.2.17.jar:/root/stariboss_k8s/app/platform-config/lib/slf4j-log4j12-1.7.5.jar:/root/stariboss_k8s/app/platform-config/lib/slf4j-api-1.7.12.jar:/root/stariboss_k8s/app/platform-config/lib/zookeeper-3.4.6.jar:/root/stariboss_k8s/app/platform-config/lib/jline-0.9.94.jar:/root/stariboss_k8s/app/platform-config/lib/netty-3.7.0.Final.jar
+2016-05-25 16:46:56  [ main:10 ] - [ INFO ]  Client environment:java.library.path=/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+2016-05-25 16:46:56  [ main:10 ] - [ INFO ]  Client environment:java.io.tmpdir=/tmp
+2016-05-25 16:46:56  [ main:10 ] - [ INFO ]  Client environment:java.compiler=<NA>
+2016-05-25 16:46:56  [ main:10 ] - [ INFO ]  Client environment:os.name=Linux
+2016-05-25 16:46:56  [ main:11 ] - [ INFO ]  Client environment:os.arch=amd64
+2016-05-25 16:46:56  [ main:11 ] - [ INFO ]  Client environment:os.version=3.10.0-327.18.2.el7.x86_64
+2016-05-25 16:46:56  [ main:12 ] - [ INFO ]  Client environment:user.name=root
+2016-05-25 16:46:56  [ main:12 ] - [ INFO ]  Client environment:user.home=/root
+2016-05-25 16:46:56  [ main:12 ] - [ INFO ]  Client environment:user.dir=/root/stariboss_k8s/app/platform-config/bin
+2016-05-25 16:46:56  [ main:13 ] - [ INFO ]  Initiating client connection, connectString=zookeeper1:2181 sessionTimeout=60000 watcher=org.apache.curator.ConnectionState@3ab39c39
+2016-05-25 16:46:56  [ main:15 ] - [ DEBUG ]  zookeeper.disableAutoWatchReset is false
+2016-05-25 16:46:56  [ main-SendThread(k8s-node1:2181):25 ] - [ INFO ]  Opening socket connection to server k8s-node1/10.0.251.165:2181. Will not attempt to authenticate using SASL (unknown error)
+2016-05-25 16:46:56  [ main-SendThread(k8s-node1:2181):77 ] - [ INFO ]  Socket connection established to k8s-node1/10.0.251.165:2181, initiating session
+2016-05-25 16:46:56  [ main-SendThread(k8s-node1:2181):79 ] - [ DEBUG ]  Session establishment request sent on k8s-node1/10.0.251.165:2181
+2016-05-25 16:47:00  [ main-SendThread(k8s-node1:2181):3830 ] - [ WARN ]  Session 0x0 for server k8s-node1/10.0.251.165:2181, unexpected error, closing socket connection and attempting reconnect
+java.io.IOException: Connection reset by peer
+	at sun.nio.ch.FileDispatcherImpl.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:39)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:192)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:380)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doIO(ClientCnxnSocketNIO.java:68)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:366)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1081)
+2016-05-25 16:47:01  [ main-SendThread(k8s-node1:2181):5530 ] - [ INFO ]  Opening socket connection to server k8s-node1/10.0.251.165:2181. Will not attempt to authenticate using SASL (unknown error)
+2016-05-25 16:47:01  [ main-SendThread(k8s-node1:2181):5531 ] - [ INFO ]  Socket connection established to k8s-node1/10.0.251.165:2181, initiating session
+2016-05-25 16:47:01  [ main-SendThread(k8s-node1:2181):5531 ] - [ DEBUG ]  Session establishment request sent on k8s-node1/10.0.251.165:2181
+2016-05-25 16:47:05  [ main-SendThread(k8s-node1:2181):9282 ] - [ WARN ]  Session 0x0 for server k8s-node1/10.0.251.165:2181, unexpected error, closing socket connection and attempting reconnect
+java.io.IOException: Connection reset by peer
+	at sun.nio.ch.FileDispatcherImpl.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:39)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:192)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:380)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doIO(ClientCnxnSocketNIO.java:68)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:366)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1081)
+2016-05-25 16:47:07  [ main-SendThread(k8s-node1:2181):11143 ] - [ INFO ]  Opening socket connection to server k8s-node1/10.0.251.165:2181. Will not attempt to authenticate using SASL (unknown error)
+2016-05-25 16:47:07  [ main-SendThread(k8s-node1:2181):11143 ] - [ INFO ]  Socket connection established to k8s-node1/10.0.251.165:2181, initiating session
+2016-05-25 16:47:07  [ main-SendThread(k8s-node1:2181):11144 ] - [ DEBUG ]  Session establishment request sent on k8s-node1/10.0.251.165:2181
+2016-05-25 16:47:11  [ main-SendThread(k8s-node1:2181):14895 ] - [ WARN ]  Session 0x0 for server k8s-node1/10.0.251.165:2181, unexpected error, closing socket connection and attempting reconnect
+java.io.IOException: Connection reset by peer
+	at sun.nio.ch.FileDispatcherImpl.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:39)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:192)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:380)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doIO(ClientCnxnSocketNIO.java:68)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:366)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1081)
+2016-05-25 16:47:12  [ main-SendThread(k8s-node1:2181):16282 ] - [ INFO ]  Opening socket connection to server k8s-node1/10.0.251.165:2181. Will not attempt to authenticate using SASL (unknown error)
+2016-05-25 16:47:12  [ main-SendThread(k8s-node1:2181):16282 ] - [ INFO ]  Socket connection established to k8s-node1/10.0.251.165:2181, initiating session
+2016-05-25 16:47:12  [ main-SendThread(k8s-node1:2181):16283 ] - [ DEBUG ]  Session establishment request sent on k8s-node1/10.0.251.165:2181
+2016-05-25 16:47:16  [ main-SendThread(k8s-node1:2181):20034 ] - [ WARN ]  Session 0x0 for server k8s-node1/10.0.251.165:2181, unexpected error, closing socket connection and attempting reconnect
+java.io.IOException: Connection reset by peer
+	at sun.nio.ch.FileDispatcherImpl.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:39)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:192)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:380)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doIO(ClientCnxnSocketNIO.java:68)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:366)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1081)
+2016-05-25 16:47:18  [ main-SendThread(k8s-node1:2181):21872 ] - [ INFO ]  Opening socket connection to server k8s-node1/10.0.251.165:2181. Will not attempt to authenticate using SASL (unknown error)
+2016-05-25 16:47:18  [ main-SendThread(k8s-node1:2181):21873 ] - [ INFO ]  Socket connection established to k8s-node1/10.0.251.165:2181, initiating session
+2016-05-25 16:47:18  [ main-SendThread(k8s-node1:2181):21873 ] - [ DEBUG ]  Session establishment request sent on k8s-node1/10.0.251.165:2181
+2016-05-25 16:47:21  [ main-SendThread(k8s-node1:2181):25625 ] - [ WARN ]  Session 0x0 for server k8s-node1/10.0.251.165:2181, unexpected error, closing socket connection and attempting reconnect
+java.io.IOException: Connection reset by peer
+	at sun.nio.ch.FileDispatcherImpl.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:39)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:192)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:380)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doIO(ClientCnxnSocketNIO.java:68)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:366)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1081)
+2016-05-25 16:47:23  [ main-SendThread(k8s-node1:2181):26753 ] - [ INFO ]  Opening socket connection to server k8s-node1/10.0.251.165:2181. Will not attempt to authenticate using SASL (unknown error)
+2016-05-25 16:47:23  [ main-SendThread(k8s-node1:2181):26753 ] - [ INFO ]  Socket connection established to k8s-node1/10.0.251.165:2181, initiating session
+2016-05-25 16:47:23  [ main-SendThread(k8s-node1:2181):26754 ] - [ DEBUG ]  Session establishment request sent on k8s-node1/10.0.251.165:2181

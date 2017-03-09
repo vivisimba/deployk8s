@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: partner-ui
+  namespace: {NAME_SPACE}
+  labels:
+    name: partner-ui
+spec:
+  replicas: 1
+  selector:
+    name: partner-ui
+  template:
+    metadata:
+      labels: 
+        name: partner-ui
+    spec:
+      imagePullSecrets:
+      - name: mysecret
+      restartPolicy: Always
+      containers:
+      - name: partner-ui
+        image: 10.0.251.196/boss/partner-ui:{IMAGE_TAG}
+        volumeMounts:
+          - mountPath: {NFS_CONTAINER_DIR}
+            name: nfs
+        imagePullPolicy: Always
+        env: 
+          - name: TZ
+            value: Asia/Shanghai
+        ports:
+        - containerPort: 8080
+          name: partner-ui
+          protocol: TCP
+      dnsPolicy: ClusterFirst
+      volumes:
+      - name: nfs
+        hostPath:
+          path: {NFS_HOST_DIR}

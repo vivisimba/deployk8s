@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: resource-s
+  namespace: kube-system
+  labels:
+    name: resource-s
+spec:
+  replicas: 1
+  selector:
+    name: resource-s
+  template:
+    metadata:
+      labels: 
+        name: resource-s
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: resource-s
+        image: registry:5000/library/resource-service:BUILDTAG_7.1.1-148-161009
+        env: 
+          - name: TZ
+            value: Asia/Shanghai
+        ports:
+        - containerPort: 8080
+          name: resource-s
+          protocol: TCP
+      dnsPolicy: ClusterFirst

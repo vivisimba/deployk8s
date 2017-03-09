@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: platform-cache-config
+  namespace: {NAME_SPACE}
+  labels:
+    name: platform-cache-config
+spec:
+  replicas: 1
+  selector:
+    name: platform-cache-config
+  template:
+    metadata:
+      labels: 
+        name: platform-cache-config
+    spec:
+      imagePullSecrets:
+      - name: mysecret
+      restartPolicy: Always
+      containers:
+      - name: platform-cache-config-s
+        image: 10.0.251.196/boss/platform-cache-config:{IMAGE_TAG}
+        imagePullPolicy: Always
+        env: 
+          - name: TZ
+            value: Asia/Shanghai
+        ports:
+        - containerPort: 8080
+          name: platform-cache
+          protocol: TCP
+      dnsPolicy: ClusterFirst

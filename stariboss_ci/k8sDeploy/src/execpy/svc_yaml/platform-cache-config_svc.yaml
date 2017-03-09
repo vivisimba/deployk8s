@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: platform-cache-config
+  namespace: {NAME_SPACE}
+  labels:
+    name: platform-cache-config
+spec:
+  selector:
+    name: platform-cache-config
+  ports:
+  - port: 8080
+    targetPort: 8080

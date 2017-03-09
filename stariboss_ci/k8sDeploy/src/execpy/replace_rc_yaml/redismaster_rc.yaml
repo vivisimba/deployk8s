@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: redismaster
+  namespace: kube-system
+  labels:
+    name: redismaster
+spec:
+  replicas: 1
+  selector:
+    name: redismaster
+  template:
+    metadata:
+      labels: 
+        name: redismaster
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: redismaster
+        image: registry:5000/library/redis:basal
+        args: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+        volumeMounts:
+          - mountPath: /usr/local/etc/redis/redis.conf
+            name: masterconf
+        env: 
+          - name: TZ
+            value: Asia/Shanghai
+        ports:
+        - containerPort: 6380
+          name: redismaster
+          protocol: TCP
+      dnsPolicy: ClusterFirst
+      volumes:
+      - name: masterconf
+        hostPath:
+          path: /redis/master/6380.conf

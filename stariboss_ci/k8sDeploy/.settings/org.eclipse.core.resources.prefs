@@ -1,0 +1,14 @@
+eclipse.preferences.version=1
+encoding//src/execpy/config/config.py=utf-8
+encoding//src/execpy/deleteRcAndSvc.py=utf-8
+encoding//src/execpy/deployFunction.py=utf-8
+encoding//src/execpy/deployK8s.py=utf-8
+encoding//src/execpy/exception/myException.py=utf-8
+encoding//src/execpy/replace_rc.py=utf-8
+encoding//src/execpy/restartService.py=utf-8
+encoding//src/execpy/scpRedisAndZkFile.py=utf-8
+encoding//src/execpy/test.py=utf-8
+encoding//src/execpy/tool.py=utf-8
+encoding//src/execpy/updateDB.py=utf-8
+encoding//src/execpy/updateTag.py=utf-8
+encoding//src/execpy/vmSnapshotOperation.py=utf-8

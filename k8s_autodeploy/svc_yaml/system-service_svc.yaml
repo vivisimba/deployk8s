@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: system-service
+  namespace: kube-system
+  labels:
+    name: system-s
+spec:
+  selector:
+    name: system-service
+  ports:
+  - port: 8080
+    targetPort: 8080

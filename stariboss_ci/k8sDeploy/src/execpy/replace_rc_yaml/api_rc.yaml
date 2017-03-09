@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: api
+  namespace: kube-system
+  labels:
+    name: api
+spec:
+  replicas: 1
+  selector:
+    name: api
+  template:
+    metadata:
+      labels: 
+        name: api
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: api
+        image: registry:5000/library/api:BUILDTAG_7.1.1-148-161009
+        env: 
+          - name: TZ
+            value: Asia/Shanghai
+        ports:
+        - containerPort: 8080
+          name: api
+          protocol: TCP
+      dnsPolicy: ClusterFirst
